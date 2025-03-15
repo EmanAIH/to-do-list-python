@@ -1,6 +1,22 @@
 # To do list
 
-#Add Task:
+import json
+from datetime import datetime
 
-def add_task():
-    task= input("what is the task you want to add")
+# add task:
+
+def load_tasks():
+    try:
+        with open('tasks.json', 'r') as file:
+            tasks = json.load(file)
+    except FileNotFoundError:
+        tasks =[]
+    return tasks
+
+# Save tasks
+
+def save_tasks(tasks):
+    with open('tasks.json', 'w') as file:
+      json.dump(tasks, file, indent=4)  
+
+# add new task
